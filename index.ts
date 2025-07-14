@@ -89,4 +89,5 @@ app.post('/api/recommend', async (req: express.Request, res: express.Response) =
   //}
 });
 
-app.listen(port, () => console.log(`Server is running on http://localhost:${port}`));
+// app.listen(port, () => console.log(`Server is running on http://localhost:${port}`));
+app.listen(() => console.log(`Server is running`));
