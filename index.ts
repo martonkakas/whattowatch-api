@@ -7,7 +7,7 @@ import cors from 'cors';
 dotenv.config();
 
 const app = express();
-const port = 3001;
+const port = 8080;
 
 app.use(express.json());
 app.use(cors());
@@ -89,5 +89,4 @@ app.post('/api/recommend', async (req: express.Request, res: express.Response) =
   //}
 });
 
-// app.listen(port, () => console.log(`Server is running on http://localhost:${port}`));
-app.listen(() => console.log(`Server is running`));
+app.listen(port, () => console.log(`Server is running on http://localhost:${port}`));
