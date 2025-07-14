@@ -1,3 +1,4 @@
+import axios from 'axios';
 import dotenv from 'dotenv';
 import express from 'express';
 import OpenAI from 'openai';
@@ -6,7 +7,7 @@ import cors from 'cors';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT;
+const port = 3001;
 
 app.use(express.json());
 app.use(cors());
