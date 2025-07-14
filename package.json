@@ -2,20 +2,25 @@
   "name": "whattowatch-api",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://github.com/martonkakas/whattowatch-api#readme",
+  "bugs": {
+    "url": "https://github.com/martonkakas/whattowatch-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martonkakas/whattowatch-api.git"
+  },
   "license": "ISC",
   "author": "",
-  "type": "module",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "prestart": "npm i",
     "start": "node --experimental-transform-types index.ts"
   },
-  "devDependencies": {
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.3",
-    "@types/node": "^24.0.13",
-    "axios": "^1.10.0",
+  "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
     "express": "^5.1.0",
     "openai": "^5.9.0"
   }
