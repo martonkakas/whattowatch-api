@@ -20,8 +20,27 @@ app.post('/api/recommend', async (req: express.Request, res: express.Response) =
   const { genres, vibe, startYear, endYear } = req.body;
   console.log('Received request with body:', req.body);
 
+  const sanitizedVibe = vibe ? sanitize(vibe) : '';
+  const sanitizedGenres = genres ? genres.sort().map((genre: string) => sanitize(genre)) : [];
+
+  const data = {
+    genres: sanitizedGenres.join(', '),
+    vibe: sanitizedVibe,
+    startYear: startYear ? parseInt(startYear, 10) : undefined,
+    endYear: endYear ? parseInt(endYear, 10) : undefined,
+  };
+
+  // check data in the database before calling the AI
+  // ...
+
+  // if data is found in the database, return it
+  // ...
+
+  // if no data is found, proceed to call the AI
+  console.log('Calling AI with data:', data);
+
   const completion = await client.chat.completions.create({
-    model: 'grok-4',
+    model: 'grok-3-mini',
     messages: [
       {
         role: 'system',
@@ -60,6 +79,21 @@ app.post('/api/recommend', async (req: express.Request, res: express.Response) =
   if (!response) {
     return res.status(400).json({ error: 'No response from AI' });
   }
+
+  // create the unmatched database entry
+  const newData = {
+    ...data,
+    ...{ movies: [...JSON.parse(response).recommendations] }
+  };
+
+  // upload newData to the database
+  // ...
+
+  // download the poster images and update the URLs in the response
+  // ...
+
+  // save the posters to object storage
+  // ...
 
   return res.json(response);
 });

@@ -1,0 +1,37 @@
+const sanitize = (string: string): string => {
+  return string
+    .trim()
+    .toLowerCase()
+    .replace(' ', '-')
+    .replace('.', '')
+    .replace('á', 'a')
+    .replace('à', 'a')
+    .replace('ä', 'a')
+    .replace('â', 'a')
+    .replace('ã', 'a')
+    .replace('é', 'e')
+    .replace('è', 'e')
+    .replace('ë', 'e')
+    .replace('ê', 'e')
+    .replace('í', 'i')
+    .replace('ì', 'i')
+    .replace('ï', 'i')
+    .replace('î', 'i')
+    .replace('ó', 'o')
+    .replace('ò', 'o')
+    .replace('ö', 'o')
+    .replace('ô', 'o')
+    .replace('õ', 'o')
+    .replace('ő', 'o')
+    .replace('ű', 'u')
+    .replace('ú', 'u')
+    .replace('ù', 'u')
+    .replace('ü', 'u')
+    .replace('û', 'u')
+    .replace('ç', 'c')
+    .replace('ñ', 'n')
+    .replace('ß', 'ss')
+    .replace(/[^a-z0-9-]/g, '') // Remove any non-alphanumeric characters except hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with a single hyphen
+    .replace(/^-|-$/g, ''); // Remove leading and trailing hyphens
+};
