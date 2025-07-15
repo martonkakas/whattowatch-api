@@ -29,7 +29,7 @@ app.post('/api/recommend', async (req: express.Request, res: express.Response) =
       },
       {
         role: 'user',
-        content: `Please recommend 3 movies for me which are eligible for the following preferences:
+        content: `Please recommend 3 movies which are eligible for the following criteria:
           - Genre: ${genres.length > 0 ? genres.join(', ') : 'any'},
           - Vibe: ${vibe || 'any'},
           - Start Year: ${startYear || 'any'},
@@ -54,6 +54,7 @@ app.post('/api/recommend', async (req: express.Request, res: express.Response) =
       },
     ],
   });
+
   const response = completion.choices[0].message.content;
 
   if (!response) {
@@ -61,31 +62,6 @@ app.post('/api/recommend', async (req: express.Request, res: express.Response) =
   }
 
   return res.json(response);
-
-
-
-
-  //let movies = [];
-  //try {
-  //  const response = completion.choices[0].message.content;
-  //  if (!response) {
-  //    return res.status(400).json({ error: 'No response from AI' });
-  //  }
-  //  const json = JSON.parse(response);
-  //
-  //  for (const id of json.recommendations) {
-  //    const response = await axios.request({
-  //      method: 'GET',
-  //      url: `https://www.omdbapi.com/?i=${id.imdbId}&apikey=${process.env.OMDB_API_KEY}`
-  //    });
-  //
-  //    movies.push(response.data);
-  //  }
-  //  return res.json(movies);
-  //} catch (error) {
-  //  console.error('Error parsing JSON:', error);
-  //  return res.status(500).json({ error: 'Failed to parse response from AI' });
-  //}
 });
 
 app.listen(port, () => console.log(`Server is running on http://localhost:${port}`));

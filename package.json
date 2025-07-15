@@ -23,5 +23,8 @@
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
     "openai": "^5.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.13"
   }
 }
